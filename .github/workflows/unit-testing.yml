@@ -1,0 +1,31 @@
+name: Unit Testing Jest
+
+on:
+  push:
+  pull_request:
+  workflow_dispatch:
+
+  jobs:
+  run-jest-tests:
+    name: Run Unit Test
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout under $GITHUB_WORKSPACE
+        uses: actions/checkout@main
+
+      - name: Install Dependencies
+        run: npm install
+
+      - name: Build SASS
+        run: npm run build
+
+      - name: Set up NodeJS
+        uses: actions/setup-node@v1
+        with:
+          node-version: 16
+
+      - name: Build lint
+        run: npm run lint
+
+      - name: run test
+        run: npm run test-unit
