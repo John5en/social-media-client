@@ -6,7 +6,7 @@ describe("Login and logout test", () => {
     cy.get("#loginModal", { timeout: 10000 }).should("be.visible");
   });
 
-  it("logs in with wrong credentials", () => {
+  it("tries to log in with wrong credentials", () => {
     cy.get("#loginEmail").invoke("val", "dud@dud.noroff.no");
     cy.get("#loginPassword").invoke("val", "dud");
 
